@@ -1,4 +1,4 @@
-
+'''javascript
 "use strict";
 
 const form = document.getElementById("information-form");
