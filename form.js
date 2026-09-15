@@ -1,4 +1,4 @@
-'''javascript
+
 "use strict";
 
 const form = document.getElementById("information-form");
@@ -196,4 +196,3 @@ form.addEventListener("submit", function (event) {
 
     window.location.href = "confirmation.html";
 });
-```
