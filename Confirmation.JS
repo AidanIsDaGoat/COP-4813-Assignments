@@ -79,7 +79,7 @@ confirmButton.addEventListener("click", function () {
         sessionStorage.getItem("formData")
     );
 
-    const recipient = "YOUR-EMAIL@example.com";
+    const recipient = "aidan_bautista@daytonastate.edu";
 
     const subject =
         "COP4813 Information Form Submission";
