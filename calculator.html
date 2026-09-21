@@ -1,0 +1,190 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projectile Motion JavaScript Calculator for COP4813">
+    <meta name="author" content="Aidan Bautista">
+
+    <title>Projectile Motion Calculator | Aidan Bautista</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js Plotting Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Calculator JavaScript -->
+    <script src="calculator.js" defer></script>
+</head>
+
+<body>
+
+<header>
+    <h1>Projectile Motion Calculator</h1>
+    <p>COP4813 Web Programming</p>
+</header>
+
+<nav aria-label="Main navigation">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="assignments.html">My Assignments</a></li>
+        <li><a href="calculator.html" aria-current="page">Calculator</a></li>
+    </ul>
+</nav>
+
+<main>
+
+    <section class="calculator-container">
+
+        <h2>Projectile Motion</h2>
+
+        <p>
+            This calculator determines the height of a projectile as it
+            travels horizontally. Enter the values below and click
+            <strong>Calculate &amp; Plot</strong>.
+        </p>
+
+        <p>
+            Equation:
+            <strong>
+                y = y₀ + x tan(θ) −
+                gx² / (2v₀² cos²(θ))
+            </strong>
+        </p>
+
+        <form id="calculator-form">
+
+            <div class="form-group">
+                <label for="velocity">
+                    Initial Velocity (m/s):
+                </label>
+                <input
+                    type="number"
+                    id="velocity"
+                    value="25"
+                    min="0.1"
+                    step="0.1"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="angle">
+                    Launch Angle (degrees):
+                </label>
+                <input
+                    type="number"
+                    id="angle"
+                    value="45"
+                    min="1"
+                    max="89"
+                    step="1"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="height">
+                    Starting Height (meters):
+                </label>
+                <input
+                    type="number"
+                    id="height"
+                    value="0"
+                    step="0.1"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="gravity">
+                    Gravity (m/s²):
+                </label>
+                <input
+                    type="number"
+                    id="gravity"
+                    value="9.81"
+                    min="0.1"
+                    step="0.01"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="startX">
+                    Starting X (meters):
+                </label>
+                <input
+                    type="number"
+                    id="startX"
+                    value="0"
+                    step="1"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="endX">
+                    Ending X (meters):
+                </label>
+                <input
+                    type="number"
+                    id="endX"
+                    value="70"
+                    step="1"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="step">
+                    Step Size (meters):
+                </label>
+                <input
+                    type="number"
+                    id="step"
+                    value="1"
+                    min="0.1"
+                    step="0.1"
+                    required>
+            </div>
+
+            <button type="submit">
+                Calculate &amp; Plot
+            </button>
+
+        </form>
+
+        <div id="error-message" role="alert"></div>
+
+    </section>
+
+    <section class="results-container">
+
+        <h2>Results</h2>
+
+        <p>
+            Maximum Height:
+            <strong><span id="maxHeight">--</span> meters</strong>
+        </p>
+
+        <p>
+            Approximate Horizontal Range:
+            <strong><span id="range">--</span> meters</strong>
+        </p>
+
+    </section>
+
+    <section class="chart-container">
+
+        <h2>Projectile Trajectory</h2>
+
+        <canvas id="projectileChart"></canvas>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Created by Aidan Bautista</p>
+    <p>COP4813 Web Programming</p>
+</footer>
+
+</body>
+</html>
+```
