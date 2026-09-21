@@ -1,43 +1,34 @@
-
 "use strict";
 
-let projectileChart = null;
+let projectileChart;
 
-const form = document.getElementById("calculator-form");
+document.addEventListener("DOMContentLoaded", function () {
 
-form.addEventListener("submit", function (event) {
+    const form = document.getElementById("calculator-form");
 
-    // Prevent the page from refreshing
-    event.preventDefault();
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        calculateProjectile();
+    });
 
-    // Get values entered by the user
-    const velocity =
-        parseFloat(document.getElementById("velocity").value);
+    // Calculate automatically when page loads
+    calculateProjectile();
+});
 
-    const angle =
-        parseFloat(document.getElementById("angle").value);
+function calculateProjectile() {
 
-    const startingHeight =
-        parseFloat(document.getElementById("height").value);
+    const velocity = Number(document.getElementById("velocity").value);
+    const angle = Number(document.getElementById("angle").value);
+    const startingHeight = Number(document.getElementById("height").value);
+    const gravity = Number(document.getElementById("gravity").value);
+    const startX = Number(document.getElementById("startX").value);
+    const endX = Number(document.getElementById("endX").value);
+    const step = Number(document.getElementById("step").value);
 
-    const gravity =
-        parseFloat(document.getElementById("gravity").value);
-
-    const startX =
-        parseFloat(document.getElementById("startX").value);
-
-    const endX =
-        parseFloat(document.getElementById("endX").value);
-
-    const step =
-        parseFloat(document.getElementById("step").value);
-
-    const errorMessage =
-        document.getElementById("error-message");
+    const errorMessage = document.getElementById("error-message");
 
     errorMessage.textContent = "";
 
-    // Basic validation
     if (
         velocity <= 0 ||
         angle <= 0 ||
@@ -46,35 +37,31 @@ form.addEventListener("submit", function (event) {
         step <= 0 ||
         endX <= startX
     ) {
-        errorMessage.textContent =
-            "Please enter valid numbers. The ending X value must be greater than the starting X value.";
+        errorMessage.textContent = "Please enter valid numbers.";
         return;
     }
 
-    // Convert degrees to radians
-    const radians = angle * (Math.PI / 180);
+    // Convert angle from degrees to radians
+    const radians = angle * Math.PI / 180;
 
     const points = [];
 
     let maxHeight = startingHeight;
     let range = startX;
 
-    // Calculate the projectile height for each X value
     for (let x = startX; x <= endX; x += step) {
 
         const y =
             startingHeight +
             x * Math.tan(radians) -
-            (
-                gravity * Math.pow(x, 2)
-            ) /
+            (gravity * x * x) /
             (
                 2 *
-                Math.pow(velocity, 2) *
+                velocity * velocity *
                 Math.pow(Math.cos(radians), 2)
             );
 
-        // Stop plotting once the projectile goes underground
+        // Stop after projectile reaches the ground
         if (y < 0 && x > startX) {
             break;
         }
@@ -91,31 +78,37 @@ form.addEventListener("submit", function (event) {
         range = x;
     }
 
-    // Display calculated results
+    // Display results
     document.getElementById("maxHeight").textContent =
         maxHeight.toFixed(2);
 
     document.getElementById("range").textContent =
         range.toFixed(2);
 
-    createChart(points);
-});
+    drawChart(points);
+}
 
+function drawChart(points) {
 
-function createChart(points) {
+    const canvas = document.getElementById("projectileChart");
 
-    const canvas =
-        document.getElementById("projectileChart");
+    if (!canvas) {
+        console.error("projectileChart canvas was not found.");
+        return;
+    }
 
-    const context = canvas.getContext("2d");
+    if (typeof Chart === "undefined") {
+        console.error("Chart.js did not load.");
+        document.getElementById("error-message").textContent =
+            "Chart.js did not load.";
+        return;
+    }
 
-    // Remove the previous graph before creating a new one
-    if (projectileChart !== null) {
+    if (projectileChart) {
         projectileChart.destroy();
     }
 
-    projectileChart = new Chart(context, {
-
+    projectileChart = new Chart(canvas, {
         type: "line",
 
         data: {
@@ -123,23 +116,18 @@ function createChart(points) {
                 label: "Projectile Path",
                 data: points,
                 borderWidth: 3,
-                pointRadius: 2,
-                tension: 0.2
+                pointRadius: 2
             }]
         },
 
         options: {
-
             responsive: true,
 
             parsing: false,
 
             scales: {
-
                 x: {
                     type: "linear",
-                    position: "bottom",
-
                     title: {
                         display: true,
                         text: "Horizontal Distance (meters)"
@@ -148,26 +136,12 @@ function createChart(points) {
 
                 y: {
                     beginAtZero: true,
-
                     title: {
                         display: true,
                         text: "Height (meters)"
                     }
                 }
-            },
-
-            plugins: {
-
-                title: {
-                    display: true,
-                    text: "Projectile Motion"
-                },
-
-                legend: {
-                    display: true
-                }
             }
         }
     });
 }
-
