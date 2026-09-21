@@ -1,4 +1,4 @@
-'''javascript
+
 "use strict";
 
 const details = document.getElementById("confirmation-details");
@@ -130,4 +130,4 @@ function escapeHTML(value) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
-```
+
