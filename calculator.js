@@ -1,4 +1,4 @@
-'''javascript
+
 "use strict";
 
 let projectileChart = null;
@@ -170,4 +170,4 @@ function createChart(points) {
         }
     });
 }
-```
+
