@@ -279,8 +279,91 @@ legend {
     .button {
         width: 100%;
         margin-right: 0;
+
+/*Projectile Motion Calculator*/
+
+
+.calculator-container,
+.results-container,
+.chart-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.calculator-container h2,
+.results-container h2,
+.chart-container h2 {
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #777;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: 3px solid #555;
+    outline-offset: 2px;
+}
+
+.calculator-container button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#error-message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.results-container p {
+    font-size: 1.1rem;
+}
+
+.chart-container {
+    position: relative;
+}
+
+#projectileChart {
+    width: 100%;
+    max-height: 500px;
+}
+
+@media (max-width: 600px) {
+
+    .calculator-container,
+    .results-container,
+    .chart-container {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    .form-group input {
+        max-width: 100%;
     }
 }
+
 
 
 
