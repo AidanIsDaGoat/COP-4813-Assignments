@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HTML5 Canvas Spirograph for COP4813">
+    <meta name="author" content="Aidan Bautista">
+
+    <title>Spirograph | Aidan Bautista</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="spirograph.js" defer></script>
+</head>
+
+<body>
+
+<header>
+    <h1>HTML5 Canvas Spirograph</h1>
+    <p>COP4813 Web Programming</p>
+</header>
+
+<nav aria-label="Main navigation">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="assignments.html">My Assignments</a></li>
+        <li><a href="form.html">Form</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="spirograph.html" aria-current="page">Spirograph</a></li>
+    </ul>
+</nav>
+
+<main>
+
+    <section class="spirograph-container">
+
+        <h2>Create a Spirograph</h2>
+
+        <p>
+            Enter values for R, r, and O, then click the button
+            to draw the Spirograph.
+        </p>
+
+        <div class="spirograph-controls">
+
+            <label for="outerRadius">
+                Outer Radius (R): 50–150
+            </label>
+            <input
+                type="number"
+                id="outerRadius"
+                value="100"
+                min="50"
+                max="150"
+                required>
+
+            <label for="innerRadius">
+                Inner Radius (r): 10–75
+            </label>
+            <input
+                type="number"
+                id="innerRadius"
+                value="40"
+                min="10"
+                max="75"
+                required>
+
+            <label for="offset">
+                Pen Offset (O): 0–75
+            </label>
+            <input
+                type="number"
+                id="offset"
+                value="50"
+                min="0"
+                max="75"
+                required>
+
+            <button id="drawButton" type="button">
+                Start Spirograph
+            </button>
+
+            <p id="spirographError" role="alert"></p>
+
+        </div>
+
+        <canvas
+            id="spirographCanvas"
+            width="700"
+            height="700">
+            Your browser does not support HTML5 Canvas.
+        </canvas>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Created by Aidan Bautista</p>
+    <p>COP4813 Web Programming</p>
+</footer>
+
+</body>
+</html>
