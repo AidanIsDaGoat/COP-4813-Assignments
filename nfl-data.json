@@ -1,0 +1,46 @@
+{
+    "season": 2024,
+    "title": "NFL Quarterback Statistics",
+    "players": [
+        {
+            "playerName": "Joe Burrow",
+            "team": "Cincinnati Bengals",
+            "gamesPlayed": 17,
+            "passingYards": 4918,
+            "passingTouchdowns": 43,
+            "interceptions": 9
+        },
+        {
+            "playerName": "Jared Goff",
+            "team": "Detroit Lions",
+            "gamesPlayed": 17,
+            "passingYards": 4629,
+            "passingTouchdowns": 37,
+            "interceptions": 12
+        },
+        {
+            "playerName": "Baker Mayfield",
+            "team": "Tampa Bay Buccaneers",
+            "gamesPlayed": 17,
+            "passingYards": 4500,
+            "passingTouchdowns": 41,
+            "interceptions": 16
+        },
+        {
+            "playerName": "Sam Darnold",
+            "team": "Minnesota Vikings",
+            "gamesPlayed": 17,
+            "passingYards": 4319,
+            "passingTouchdowns": 35,
+            "interceptions": 12
+        },
+        {
+            "playerName": "Lamar Jackson",
+            "team": "Baltimore Ravens",
+            "gamesPlayed": 17,
+            "passingYards": 4172,
+            "passingTouchdowns": 41,
+            "interceptions": 4
+        }
+    ]
+}
