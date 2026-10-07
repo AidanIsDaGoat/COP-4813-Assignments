@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="NFL statistics displayed using external JSON data.">
+    <meta name="author" content="Aidan Bautista">
+
+    <title>JSON NFL Statistics | Aidan Bautista</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="nfl-stats.js" defer></script>
+</head>
+
+<body>
+
+<header>
+    <h1>2024 NFL Quarterback Statistics</h1>
+    <p>COP4813 Web Programming</p>
+</header>
+
+<nav aria-label="Main navigation">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="assignments.html">My Assignments</a></li>
+        <li><a href="form.html">Form</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="spirograph.html">Spirograph</a></li>
+        <li><a href="nfl-stats.html" aria-current="page">JSON Data</a></li>
+    </ul>
+</nav>
+
+<main>
+
+    <section class="json-container">
+
+        <h2 id="data-title">NFL Statistics</h2>
+
+        <p>
+            This table is created dynamically with JavaScript
+            using data stored in an external JSON file.
+        </p>
+
+        <div class="table-wrapper">
+
+            <table id="stats-table">
+
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Team</th>
+                        <th>Games</th>
+                        <th>Passing Yards</th>
+                        <th>Touchdowns</th>
+                        <th>Interceptions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="stats-body">
+                    <!-- JavaScript will add the JSON data here -->
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p id="json-error" role="alert"></p>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Created by Aidan Bautista</p>
+    <p>COP4813 Web Programming</p>
+</footer>
+
+</body>
+</html>
