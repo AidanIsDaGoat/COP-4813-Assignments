@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aidan Bautista">
+
+    <title>Drag and Drop Card Game | COP4813</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="dragdrop.js" defer></script>
+</head>
+
+<body>
+
+<header>
+    <h1>Drag and Drop Card Game</h1>
+    <p>COP4813 Web Programming</p>
+</header>
+
+<nav aria-label="Main navigation">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="assignments.html">My Assignments</a></li>
+        <li><a href="form.html">Form</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="spirograph.html">Spirograph</a></li>
+        <li><a href="nfl-stats.html">JSON Data</a></li>
+        <li><a href="dragdrop.html" aria-current="page">Drag and Drop</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="card-game">
+
+        <h2>Playing Card Game</h2>
+
+        <p>
+            Click Deal Cards to receive five random cards.
+            Drag a card into the Discard Pile to remove it.
+        </p>
+
+        <button id="dealButton" type="button">
+            Deal Cards
+        </button>
+
+        <h3>Your Hand</h3>
+
+        <div id="cardHand" class="card-hand"></div>
+
+        <h3>Discard Pile</h3>
+
+        <div id="discardPile" class="discard-pile">
+            Drop Cards Here
+        </div>
+
+        <p id="gameMessage" role="status" aria-live="polite">
+            Click Deal Cards to begin!
+        </p>
+
+    </section>
+</main>
+
+<footer>
+    <p>Created by Aidan Bautista</p>
+    <p>COP4813 Web Programming</p>
+</footer>
+
+</body>
+</html>
