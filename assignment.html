@@ -1,89 +1,117 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Aidan Bautista's COP4813 web programming assignments.">
     <meta name="author" content="Aidan Bautista">
-    <meta name="keywords" content="COP4813, assignments, web programming, HTML, CSS">
 
-    <title>Aidan Bautista | Assignments</title>
+    <title>My Assignments | Aidan Bautista</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Aidan Bautista</h1>
-        <p>COP4813 Web Programming Assignments</p>
-    </header>
+<header>
+    <h1>Aidan Bautista</h1>
+    <p>COP4813 Web Programming Portfolio</p>
+</header>
 
-    <nav aria-label="Main navigation">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="assignments.html">My Assignments</a></li>
-            <li><a href="index.html#classes">My Classes</a></li>
-            <li><a href="index.html#skills">Skills</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-    </nav>
+<nav aria-label="Main navigation">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+            <a href="assignments.html" aria-current="page">
+                My Assignments
+            </a>
+        </li>
+    </ul>
+</nav>
 
-    <main>
+<main>
 
-        <section>
-            <h2>My Assignments</h2>
-            <ul>
-                <li>
-                <a href="calculator.html">
-                    JavaScript Projectile Motion Calculator
-                </a>
-                </li>
-            </ul>
-            <p>
-                This page contains my assignments for COP4813 Web Programming.
-                More assignments will be added as the semester continues.
-            </p>
+    <section class="assignments-container">
 
-            <div class="assignment-list">
+        <h2>My COP4813 Assignments</h2>
 
-                <article>
-                    <h3>Assignment 1 - Hello World</h3>
+        <p>
+            Welcome to my assignments page!
+            Below are the web programming assignments
+            I have completed throughout this course.
+            Click any assignment to view it.
+        </p>
 
-                    <p>
-                        This assignment introduced basic web hosting and
-                        required creating a simple Hello World webpage.
-                    </p>
+        <div class="assignment-list">
 
-                    <a href="assignment1.html">
-                        View Assignment 1
-                    </a>
-                </article>
-
-                <article>
-                    <h3>Assignment 2 - Personal Website</h3>
-
-                    <p>
-                        This assignment is my personal website for COP4813.
-                        It demonstrates HTML, CSS, navigation, accessibility,
-                        and web hosting.
-                    </p>
-
-                    <a href="index.html">
-                        View Personal Website
-                    </a>
-                </article>
-
+            <div class="assignment-card">
+                <h3>Assignment 1 - Personal Website</h3>
+                <p>
+                    Created a personal portfolio website using
+                    HTML5 and CSS.
+                </p>
+                <a href="index.html">View Assignment</a>
             </div>
-        </section>
 
-    </main>
+            <div class="assignment-card">
+                <h3>Assignment 2 - HTML Form</h3>
+                <p>
+                    Created an interactive HTML form with
+                    JavaScript validation and a confirmation page.
+                </p>
+                <a href="form.html">View Assignment</a>
+            </div>
 
-    <footer>
-        <p>&copy; 2026 Aidan Bautista. All rights reserved.</p>
-    </footer>
+            <div class="assignment-card">
+                <h3>Assignment 3 - JavaScript Calculator</h3>
+                <p>
+                    Created a projectile motion calculator
+                    using JavaScript and Chart.js.
+                </p>
+                <a href="calculator.html">View Assignment</a>
+            </div>
+
+            <div class="assignment-card">
+                <h3>Assignment 4 - HTML5 Spirograph</h3>
+                <p>
+                    Used HTML5 Canvas and JavaScript to
+                    create an animated Spirograph.
+                </p>
+                <a href="spirograph.html">View Assignment</a>
+            </div>
+
+            <div class="assignment-card">
+                <h3>Assignment 5 - JSON NFL Statistics</h3>
+                <p>
+                    Used JavaScript to read an external JSON
+                    file and display NFL player statistics.
+                </p>
+                <a href="nfl-stats.html">View Assignment</a>
+            </div>
+
+            <div class="assignment-card">
+                <h3>Assignment 6 - Drag and Drop Card Game</h3>
+                <p>
+                    Created an interactive playing card game
+                    using HTML5 drag-and-drop features.
+                </p>
+                <a href="dragdrop.html">View Assignment</a>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Created by Aidan Bautista</p>
+    <p>COP4813 Web Programming</p>
+</footer>
 
 </body>
 </html>
+
