@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aidan Bautista">
+    <title>Interactive Canvas Animation | COP4813</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="animation.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Interactive Canvas Animation</h1>
+        <p>COP4813 Web Programming</p>
+    </header>
+
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="assignments.html">My Assignments</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="animation-container">
+            <h2>Bouncing Neon Ball</h2>
+            <p>Watch the ball bounce around the box. Click the ball to change its color and direction!</p>
+
+            <canvas id="animationCanvas" width="800" height="450">
+                Your browser does not support HTML5 Canvas.
+            </canvas>
+
+            <p id="animationMessage" role="status" aria-live="polite">
+                Animation running. Try clicking the ball!
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created by Aidan Bautista</p>
+        <p>COP4813 Web Programming</p>
+    </footer>
+</body>
+</html>
