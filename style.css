@@ -669,6 +669,94 @@ legend {
     .animation-container {
         margin: 15px;
         padding: 12px;
+  
+/* Mobile-friendly responsive design */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+img,
+video,
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Navigation */
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 12px;
+    text-decoration: none;
+}
+
+/* Mobile screens */
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    header,
+    main,
+    footer {
+        padding: 16px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+    }
+
+    nav a {
+        display: block;
+        width: 100%;
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+        max-width: 100%;
+        font: inherit;
+    }
+
+    button {
+        min-height: 44px;
+        padding: 10px 16px;
     }
 }
    
