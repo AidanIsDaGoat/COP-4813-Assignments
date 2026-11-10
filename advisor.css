@@ -1,0 +1,257 @@
+
+.advisor-container {
+    width: 92%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.advisor-heading,
+.advisor-section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.advisor-heading h2,
+.advisor-section h2 {
+    color: #173b63;
+}
+
+.advisor-heading a {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.advisor-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    background: #173b63;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.summary-card h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.summary-card p {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 0 0;
+}
+
+.advisor-controls,
+.planner-controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.advisor-controls input,
+.advisor-controls select,
+.planner-controls select {
+    padding: 12px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.advisor-controls input {
+    flex: 1;
+    min-width: 180px;
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+}
+
+.course-card {
+    background: #f5f8fc;
+    border: 1px solid #d4deeb;
+    border-left: 5px solid #173b63;
+    padding: 18px;
+    border-radius: 9px;
+}
+
+.course-card h3 {
+    color: #173b63;
+    margin-top: 0;
+}
+
+.course-card p {
+    line-height: 1.5;
+}
+
+.course-card.completed {
+    border-left-color: #218838;
+    background: #effaf1;
+}
+
+.course-card.locked {
+    border-left-color: #dc3545;
+    background: #fff5f5;
+}
+
+.course-card.available {
+    border-left-color: #007bff;
+}
+
+.course-status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 5px;
+    background: #e3eaf4;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.course-card button,
+.planner-actions button,
+.remove-course {
+    background: #173b63;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.course-card button:hover,
+.planner-actions button:hover,
+.remove-course:hover {
+    background: #285d91;
+}
+
+.course-card button:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+.course-card label {
+    display: block;
+    margin-top: 12px;
+}
+
+.course-card input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+
+.course-note {
+    background: #fff3cd;
+    border-left: 4px solid #e0a800;
+    padding: 10px;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.semester-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.semester-box {
+    background: #f5f8fc;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px dashed #a9bad0;
+    min-height: 180px;
+}
+
+.semester-box h3 {
+    color: #173b63;
+    margin-top: 0;
+}
+
+.drop-zone {
+    min-height: 110px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.drop-zone.drag-over {
+    background: #dcecff;
+    outline: 2px dashed #173b63;
+}
+
+.planned-course {
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    border: 1px solid #ccd5df;
+}
+
+.planned-course strong {
+    display: block;
+}
+
+.remove-course {
+    background: #b02a37;
+    font-size: 12px;
+}
+
+#advisorMessage {
+    padding: 18px;
+    background: #eaf2fb;
+    border-left: 5px solid #173b63;
+    border-radius: 7px;
+    line-height: 1.6;
+}
+
+.disclaimer {
+    margin-top: 20px;
+    padding: 12px;
+    background: #fff3cd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 600px) {
+    .advisor-container {
+        width: 95%;
+    }
+
+    .advisor-heading,
+    .advisor-section {
+        padding: 16px;
+    }
+
+    .advisor-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .advisor-controls {
+        flex-direction: column;
+    }
+
+    .advisor-controls input,
+    .advisor-controls select {
+        width: 100%;
+    }
+
+    .course-grid,
+    .semester-list {
+        grid-template-columns: 1fr;
+    }
+
+    .planner-controls {
+        flex-direction: column;
+    }
+}
