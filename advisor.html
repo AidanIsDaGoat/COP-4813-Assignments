@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aidan Bautista">
+    <meta name="description" content="Interactive Daytona State College Cybersecurity Class Advisor">
+    <title>Cybersecurity Class Advisor | Aidan Bautista</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="advisor.css">
+
+    <script src="advisor.js" defer></script>
+</head>
+
+<body>
+
+<header>
+    <h1>Aidan Bautista</h1>
+    <p>COP4813 Web Programming Portfolio</p>
+</header>
+
+<nav aria-label="Main navigation">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="assignments.html">My Assignments</a></li>
+    </ul>
+</nav>
+
+<main class="advisor-container">
+
+    <section class="advisor-heading">
+        <h2>Cybersecurity Class Advisor</h2>
+        <p>
+            Plan your classes for the Daytona State College
+            Cybersecurity and Network Systems Technology A.S. Degree.
+        </p>
+        <p>
+            Select completed courses to see which classes you
+            may be eligible to take. Then add courses to your
+            semester plan.
+        </p>
+
+        <a href="https://daytonastate.smartcatalogiq.com/en/2026-2027/college-catalog/program-guides/a-s-degree/cybersecurity-and-network-systems-technology-a-s-degree"
+           target="_blank" rel="noopener">
+            View Official Daytona State Program Guide
+        </a>
+    </section>
+
+    <section class="advisor-summary">
+        <div class="summary-card">
+            <h3>Completed</h3>
+            <p id="completedCount">0</p>
+        </div>
+
+        <div class="summary-card">
+            <h3>Available</h3>
+            <p id="availableCount">0</p>
+        </div>
+
+        <div class="summary-card">
+            <h3>Planned</h3>
+            <p id="plannedCount">0</p>
+        </div>
+    </section>
+
+    <section class="advisor-section">
+        <h2>Course Selection</h2>
+
+        <p>
+            Check the courses you have already completed.
+            Available courses will update automatically.
+        </p>
+
+        <div class="advisor-controls">
+            <input
+                type="search"
+                id="courseSearch"
+                placeholder="Search courses..."
+                aria-label="Search courses">
+
+            <select id="courseFilter" aria-label="Filter courses">
+                <option value="all">All Courses</option>
+                <option value="completed">Completed</option>
+                <option value="available">Available</option>
+                <option value="locked">Prerequisites Needed</option>
+            </select>
+        </div>
+
+        <div id="courseList" class="course-grid">
+            <p>Loading courses...</p>
+        </div>
+    </section>
+
+    <section class="advisor-section planner-section">
+
+        <h2>My Semester Planner</h2>
+
+        <p>
+            Drag available courses into a semester below,
+            or use the Add to Plan button on a course.
+        </p>
+
+        <div class="planner-controls">
+            <label for="semesterSelect">Choose semester:</label>
+
+            <select id="semesterSelect">
+                <option value="Fall 2026">Fall 2026</option>
+                <option value="Spring 2027">Spring 2027</option>
+                <option value="Summer 2027">Summer 2027</option>
+                <option value="Fall 2027">Fall 2027</option>
+                <option value="Spring 2028">Spring 2028</option>
+            </select>
+        </div>
+
+        <div id="semesterList" class="semester-list">
+
+            <div class="semester-box" data-semester="Fall 2026">
+                <h3>Fall 2026</h3>
+                <div class="drop-zone">
+                    <p>Drop courses here</p>
+                </div>
+            </div>
+
+            <div class="semester-box" data-semester="Spring 2027">
+                <h3>Spring 2027</h3>
+                <div class="drop-zone">
+                    <p>Drop courses here</p>
+                </div>
+            </div>
+
+            <div class="semester-box" data-semester="Summer 2027">
+                <h3>Summer 2027</h3>
+                <div class="drop-zone">
+                    <p>Drop courses here</p>
+                </div>
+            </div>
+
+            <div class="semester-box" data-semester="Fall 2027">
+                <h3>Fall 2027</h3>
+                <div class="drop-zone">
+                    <p>Drop courses here</p>
+                </div>
+            </div>
+
+            <div class="semester-box" data-semester="Spring 2028">
+                <h3>Spring 2028</h3>
+                <div class="drop-zone">
+                    <p>Drop courses here</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="planner-actions">
+            <button id="clearPlan">Clear Course Plan</button>
+        </div>
+
+    </section>
+
+    <section class="advisor-section">
+        <h2>Advisor Information</h2>
+
+        <div id="advisorMessage">
+            Select completed courses to see your enrollment options.
+        </div>
+
+        <p class="disclaimer">
+            This is a student-created educational planning tool.
+            Prerequisite examples used to demonstrate AND/OR logic
+            are illustrative and must be verified with the current
+            Daytona State catalog or an academic advisor before
+            registering. Course availability and degree requirements
+            can change.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <p>Created by Aidan Bautista</p>
+    <p>COP4813 Web Programming</p>
+</footer>
+
+</body>
+</html>
