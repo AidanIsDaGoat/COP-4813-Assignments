@@ -1,0 +1,211 @@
+
+{
+  "program": {
+    "name": "Cybersecurity and Network Systems Technology",
+    "college": "Daytona State College",
+    "degree": "Associate of Science",
+    "catalog": "2026-2027",
+    "programCode": "200200"
+  },
+
+  "courses": [
+    {
+      "id": "COP1000",
+      "name": "Principles of Computer Programming",
+      "credits": 3,
+      "category": "Program Specific",
+      "description": "Introduces students to computer programming concepts.",
+      "prerequisites": [],
+      "notes": "Program-specific course."
+    },
+    {
+      "id": "CET2154",
+      "name": "Computer Hardware and Software",
+      "credits": 4,
+      "category": "Program Specific",
+      "description": "Introduces computer hardware and software concepts.",
+      "prerequisites": [],
+      "notes": "Program-specific course."
+    },
+    {
+      "id": "CTS2321",
+      "name": "Linux Fundamentals",
+      "credits": 3,
+      "category": "Program Specific",
+      "description": "Introduces Linux operating systems and commands.",
+      "prerequisites": [],
+      "notes": "Useful for networking and cybersecurity."
+    },
+    {
+      "id": "CET1600",
+      "name": "Network Plus",
+      "credits": 3,
+      "category": "Program Specific",
+      "description": "Introduces networking concepts and technologies.",
+      "prerequisites": [],
+      "notes": "Program-specific course."
+    },
+    {
+      "id": "CTS2353",
+      "name": "Windows Server Hybrid Azure Cloud Services",
+      "credits": 3,
+      "category": "Program Specific",
+      "description": "Covers Windows Server and cloud services.",
+      "prerequisites": [],
+      "notes": "Program-specific course."
+    },
+    {
+      "id": "CTS2358",
+      "name": "Windows Server Hybrid Azure Cloud Infrastructure",
+      "credits": 3,
+      "category": "Program Specific",
+      "description": "Covers Windows Server hybrid cloud infrastructure.",
+      "prerequisites": [
+        {
+          "type": "OR",
+          "courses": ["CTS2321", "CET2154"],
+          "demo": true
+        }
+      ],
+      "notes": "DEMO prerequisite rule: either listed course satisfies this example. Verify actual prerequisites with the college."
+    },
+    {
+      "id": "CTS2214",
+      "name": "Next-Gen Project Management: Human, AI and Automation",
+      "credits": 3,
+      "category": "Program Specific",
+      "description": "Introduces project management concepts.",
+      "prerequisites": [],
+      "notes": "Program-specific course."
+    },
+    {
+      "id": "CET2660",
+      "name": "Fundamentals of Cybersecurity Analysis",
+      "credits": 3,
+      "category": "Program Specific",
+      "description": "Introduces cybersecurity analysis.",
+      "prerequisites": [
+        {
+          "type": "AND",
+          "courses": ["CET1600", "CTS2321"],
+          "demo": true
+        }
+      ],
+      "notes": "DEMO prerequisite rule: both listed courses satisfy this example. Verify actual prerequisites with the college."
+    },
+    {
+      "id": "CTS2375",
+      "name": "Essentials of Cloud Computing",
+      "credits": 3,
+      "category": "Program Specific",
+      "description": "Introduces cloud computing technologies.",
+      "prerequisites": [],
+      "notes": "Program-specific course."
+    },
+    {
+      "id": "CIS2350",
+      "name": "Principles of Information Assurance",
+      "credits": 3,
+      "category": "Program Specific",
+      "description": "Introduces information assurance and security.",
+      "prerequisites": [],
+      "notes": "Program-specific course."
+    },
+    {
+      "id": "CNT2404",
+      "name": "Intrusion Detection and Response",
+      "credits": 3,
+      "category": "Program Specific",
+      "description": "Covers intrusion detection and incident response.",
+      "prerequisites": [],
+      "notes": "Program-specific course."
+    },
+    {
+      "id": "EGS1000",
+      "name": "Professional Performance for Technicians",
+      "credits": 3,
+      "category": "Program Specific",
+      "description": "Develops professional skills for technical careers.",
+      "prerequisites": [],
+      "notes": "Program-specific course."
+    },
+    {
+      "id": "CIS2949",
+      "name": "Internship in Computer and Information Systems",
+      "credits": 2,
+      "category": "Program Specific",
+      "description": "Provides practical work experience in information systems.",
+      "prerequisites": [
+        {
+          "type": "AND",
+          "courses": ["CIS2350", "CET2660"],
+          "demo": true
+        }
+      ],
+      "notes": "The 2026-2027 program guide identifies this as a variable-credit course and specifies two credits for this program. DEMO prerequisite rule: verify actual eligibility with the department."
+    },
+    {
+      "id": "CIS2121",
+      "name": "Security Operations Management",
+      "credits": 3,
+      "category": "Elective",
+      "description": "Explores security operations management.",
+      "prerequisites": [],
+      "notes": "Choose as one of the program electives."
+    },
+    {
+      "id": "CET2850",
+      "name": "Wireless and Mobile Security",
+      "credits": 3,
+      "category": "Elective",
+      "description": "Covers wireless and mobile security.",
+      "prerequisites": [],
+      "notes": "Choose as one of the program electives."
+    },
+    {
+      "id": "COP2800",
+      "name": "Computer Programming Java",
+      "credits": 3,
+      "category": "Elective",
+      "description": "Introduces Java programming.",
+      "prerequisites": [],
+      "notes": "Choose as one of the program electives."
+    },
+    {
+      "id": "CNT2402",
+      "name": "Penetration Testing",
+      "credits": 3,
+      "category": "Elective",
+      "description": "Introduces penetration testing concepts.",
+      "prerequisites": [],
+      "notes": "Choose as one of the program electives."
+    },
+    {
+      "id": "EET1011C",
+      "name": "Introduction to Electrical Circuits and Lab",
+      "credits": 3,
+      "category": "Elective",
+      "description": "Introduces electrical circuits.",
+      "prerequisites": [],
+      "notes": "Choose as one of the program electives."
+    },
+    {
+      "id": "CET1112C",
+      "name": "Digital Fundamentals and Lab",
+      "credits": 4,
+      "category": "Elective",
+      "description": "Introduces digital fundamentals.",
+      "prerequisites": [],
+      "notes": "Choose as one of the program electives."
+    },
+    {
+      "id": "EET1607C",
+      "name": "Electronics Assembly and Cabling and Lab",
+      "credits": 3,
+      "category": "Elective",
+      "description": "Introduces electronics assembly and cabling.",
+      "prerequisites": [],
+      "notes": "Choose as one of the program electives."
+    }
+  ]
+}
