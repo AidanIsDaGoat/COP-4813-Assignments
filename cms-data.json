@@ -1,0 +1,118 @@
+
+[
+    {
+        "name": "WordPress",
+        "support": "Open Source. Developed and maintained by the WordPress community.",
+        "technology": "Server: PHP. Database: MySQL or MariaDB. Client: HTML, CSS, and JavaScript. Supports REST API.",
+        "capabilities": "Thousands of themes and plugins. Custom page designs, blogging, e-commerce through WooCommerce, user management, and REST API support.",
+        "limitations": "Requires regular updates and security maintenance. Poorly maintained plugins can create security risks. Some advanced features require paid plugins or development work.",
+        "example": "https://www.nasa.gov",
+        "exampleName": "NASA",
+        "sources": [
+            {
+                "label": "Official requirements",
+                "url": "https://wordpress.org/about/requirements/"
+            },
+            {
+                "label": "WordPress showcase",
+                "url": "https://wordpress.org/showcase/"
+            },
+            {
+                "label": "WordPress REST API",
+                "url": "https://developer.wordpress.org/rest-api/"
+            }
+        ]
+    },
+    {
+        "name": "Drupal",
+        "support": "Open Source. Maintained by the Drupal community.",
+        "technology": "Server: PHP. Database: MySQL, MariaDB, PostgreSQL, or SQLite. Client: HTML, CSS, and JavaScript.",
+        "capabilities": "Custom content types, themes, modules, user permissions, multilingual support, and API capabilities. Suitable for large and complex websites.",
+        "limitations": "Can be difficult for beginners to learn. Setup, configuration, and maintenance can require technical knowledge. Some projects need experienced developers.",
+        "example": "https://www.drupal.org",
+        "exampleName": "Drupal",
+        "sources": [
+            {
+                "label": "Drupal system requirements",
+                "url": "https://www.drupal.org/docs/getting-started/system-requirements"
+            },
+            {
+                "label": "Drupal PHP requirements",
+                "url": "https://www.drupal.org/docs/getting-started/system-requirements/php-requirements"
+            },
+            {
+                "label": "Drupal database requirements",
+                "url": "https://www.drupal.org/docs/getting-started/system-requirements/database-server-requirements"
+            }
+        ]
+    },
+    {
+        "name": "Joomla",
+        "support": "Open Source. Developed and supported by the Joomla community.",
+        "technology": "Server: PHP. Database: MySQL, MariaDB, or PostgreSQL. Client: HTML, CSS, and JavaScript.",
+        "capabilities": "Templates, extensions, user access controls, multilingual websites, content management, and customization options.",
+        "limitations": "Some extensions and templates cost money. Updates and extension compatibility need attention. Beginners may need time to learn its administration system.",
+        "example": "https://www.joomla.org",
+        "exampleName": "Joomla",
+        "sources": [
+            {
+                "label": "Joomla technical requirements",
+                "url": "https://manual.joomla.org/docs/5.4/get-started/technical-requirements/"
+            },
+            {
+                "label": "Joomla hosting guide",
+                "url": "https://guide.joomla.org/user-guide/getting-started/getting-started-hosting-setup"
+            },
+            {
+                "label": "Joomla official website",
+                "url": "https://www.joomla.org"
+            }
+        ]
+    },
+    {
+        "name": "Wix",
+        "support": "Commercial hosted website builder and CMS supported by Wix.",
+        "technology": "Cloud-hosted platform. Wix manages the server and database infrastructure. Client: HTML, CSS, and JavaScript. Velo provides development tools and APIs.",
+        "capabilities": "Drag-and-drop website editing, templates, content collections, dynamic pages, built-in hosting, and integrations. Supports custom development through Velo.",
+        "limitations": "Less control over hosting and server configuration. Some features depend on paid plans. CMS collections have storage and usage limits. Moving a site to another platform can require rebuilding parts of it.",
+        "example": "https://www.wix.com",
+        "exampleName": "Wix",
+        "sources": [
+            {
+                "label": "Wix CMS overview",
+                "url": "https://support.wix.com/en/article/cms-content-management-system-an-overview"
+            },
+            {
+                "label": "Wix developer CMS documentation",
+                "url": "https://dev.wix.com/docs/overview/site-features-tools/cms"
+            },
+            {
+                "label": "Wix CMS collection limits",
+                "url": "https://support.wix.com/en/article/cms-understanding-collection-storage-limits-and-quotas"
+            }
+        ]
+    },
+    {
+        "name": "Shopify",
+        "support": "Commercial hosted e-commerce platform supported by Shopify.",
+        "technology": "Cloud-hosted platform with Shopify-managed database and infrastructure. Themes use Liquid, HTML, CSS, and JavaScript. Provides Storefront and other APIs.",
+        "capabilities": "Online stores, product management, payment and checkout features, inventory management, themes, apps, and e-commerce APIs.",
+        "limitations": "Monthly subscription costs and possible additional app fees. Advanced customization may require coding. Some checkout and platform features have restrictions. Less control over server infrastructure.",
+        "example": "https://www.shopify.com",
+        "exampleName": "Shopify",
+        "sources": [
+            {
+                "label": "Shopify developer API documentation",
+                "url": "https://shopify.dev/docs/api"
+            },
+            {
+                "label": "Shopify theme documentation",
+                "url": "https://shopify.dev/docs/storefronts/themes"
+            },
+            {
+                "label": "Shopify theme support limitations",
+                "url": "https://help.shopify.com/en/manual/online-store/themes/theme-support"
+            }
+        ]
+    }
+]
