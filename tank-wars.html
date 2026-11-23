@@ -1,0 +1,860 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Tank Wars</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #101827;
+    color: white;
+    text-align: center;
+}
+
+header {
+    padding: 20px;
+    background: #17263d;
+}
+
+header h1 {
+    margin: 0;
+    color: #65d9ff;
+    font-size: 32px;
+}
+
+header p {
+    color: #c6d5e5;
+}
+
+.game-container {
+    width: 95%;
+    max-width: 1000px;
+    margin: 25px auto;
+}
+
+.game-panel {
+    background: #1d2b40;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+canvas {
+    width: 100%;
+    max-width: 900px;
+    background: #8ed8ff;
+    border: 3px solid #415a77;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+}
+
+.health-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.health-box {
+    width: 48%;
+}
+
+.health-bar {
+    height: 18px;
+    background: #555;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.health-fill {
+    height: 100%;
+    width: 100%;
+    transition: width .3s;
+}
+
+#playerHealth {
+    background: #2196f3;
+}
+
+#enemyHealth {
+    background: #f44336;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    text-align: left;
+}
+
+.controls label {
+    display: block;
+    margin: 10px 0;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+button {
+    background: #00a6d6;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background: #087fa8;
+}
+
+button:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+#fireButton {
+    background: #e85d35;
+    width: 100%;
+    font-size: 19px;
+}
+
+#fireButton:hover {
+    background: #bd3e21;
+}
+
+.equation {
+    font-size: 30px;
+    color: #ffe66d;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.message {
+    min-height: 28px;
+    color: #ffe66d;
+    font-weight: bold;
+}
+
+.instructions {
+    text-align: left;
+    line-height: 1.7;
+}
+
+footer {
+    padding: 20px;
+    color: #9fb3c8;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 25px;
+    }
+
+    .health-container {
+        flex-direction: column;
+    }
+
+    .health-box {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚀 Math Tank Wars</h1>
+    <p>Solve equations. Aim your weapon. Destroy the enemy!</p>
+</header>
+
+<div class="game-container">
+
+    <div class="game-panel">
+
+        <div class="health-container">
+
+            <div class="health-box">
+                <h3>🔵 Your Tank</h3>
+                <div class="health-bar">
+                    <div class="health-fill" id="playerHealth"></div>
+                </div>
+                <p id="playerHealthText">100 HP</p>
+            </div>
+
+            <div class="health-box">
+                <h3>🔴 Enemy Tank</h3>
+                <div class="health-bar">
+                    <div class="health-fill" id="enemyHealth"></div>
+                </div>
+                <p id="enemyHealthText">100 HP</p>
+            </div>
+
+        </div>
+
+        <h3 id="turnText">Your Turn!</h3>
+
+        <canvas id="gameCanvas" width="900" height="420"></canvas>
+
+        <p id="gameMessage" class="message">
+            Solve the equation to unlock your attack!
+        </p>
+
+    </div>
+
+    <div class="game-panel">
+
+        <h2>🧮 Solve the Equation</h2>
+
+        <p>Answer correctly to unlock your weapon.</p>
+
+        <div class="equation" id="equation">5 + 3 = ?</div>
+
+        <input
+            type="number"
+            id="answer"
+            placeholder="Enter your answer"
+        >
+
+        <button id="checkButton" onclick="checkAnswer()">
+            Check Answer
+        </button>
+
+        <p id="mathMessage" class="message"></p>
+
+    </div>
+
+    <div class="game-panel">
+
+        <h2>🎯 Weapon Controls</h2>
+
+        <div class="controls">
+
+            <div>
+                <label>
+                    Firing Angle:
+                    <strong id="angleValue">45°</strong>
+                </label>
+
+                <input
+                    type="range"
+                    id="angle"
+                    min="10"
+                    max="80"
+                    value="45"
+                    oninput="updateControls()"
+                >
+            </div>
+
+            <div>
+                <label>
+                    Power:
+                    <strong id="powerValue">50</strong>
+                </label>
+
+                <input
+                    type="range"
+                    id="power"
+                    min="20"
+                    max="100"
+                    value="50"
+                    oninput="updateControls()"
+                >
+            </div>
+
+        </div>
+
+        <button id="fireButton" onclick="fireShot()" disabled>
+            🚀 FIRE!
+        </button>
+
+        <button onclick="restartGame()">
+            Restart Game
+        </button>
+
+        <p id="scoreText">Your Hits: 0 | Enemy Hits: 0</p>
+
+    </div>
+
+    <div class="game-panel instructions">
+
+        <h2>📖 How to Play</h2>
+
+        <ol>
+            <li>Read the math equation displayed on the screen.</li>
+            <li>Enter your answer and click Check Answer.</li>
+            <li>A correct answer unlocks your weapon.</li>
+            <li>Adjust your angle and power to aim.</li>
+            <li>Click FIRE to launch your projectile.</li>
+            <li>Try to hit the enemy tank and reduce its health to zero.</li>
+            <li>The computer will attack after your turn.</li>
+            <li>The first tank to lose all its health loses the game.</li>
+        </ol>
+
+    </div>
+
+</div>
+
+<footer>
+    Created by Aidan Bautista | COP4813 Web Programming
+</footer>
+
+<script>
+
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+let playerHealth = 100;
+let enemyHealth = 100;
+
+let playerHits = 0;
+let enemyHits = 0;
+
+let playerUnlocked = false;
+let gameOver = false;
+let playerTurn = true;
+let waiting = false;
+
+let correctAnswer = 0;
+let difficulty = 1;
+
+let projectile = null;
+let explosion = null;
+
+const groundY = 350;
+
+const player = {
+    x: 120,
+    y: groundY,
+    color: "#168cff"
+};
+
+const enemy = {
+    x: 780,
+    y: groundY,
+    color: "#ef4444"
+};
+
+// Generate math questions
+function generateQuestion() {
+
+    let a, b, operator;
+
+    let operations = ["+", "-", "*"];
+
+    if (difficulty >= 3) {
+        operations.push("/");
+    }
+
+    operator = operations[
+        Math.floor(Math.random() * operations.length)
+    ];
+
+    a = Math.floor(Math.random() * (10 * difficulty)) + 2;
+    b = Math.floor(Math.random() * (10 * difficulty)) + 2;
+
+    if (operator === "+") {
+        correctAnswer = a + b;
+    }
+
+    if (operator === "-") {
+        if (a < b) {
+            [a, b] = [b, a];
+        }
+
+        correctAnswer = a - b;
+    }
+
+    if (operator === "*") {
+        correctAnswer = a * b;
+    }
+
+    if (operator === "/") {
+        correctAnswer = a;
+        b = Math.floor(Math.random() * 9) + 2;
+        a = correctAnswer * b;
+    }
+
+    document.getElementById("equation").textContent =
+        `${a} ${operator} ${b} = ?`;
+
+    document.getElementById("answer").value = "";
+    document.getElementById("mathMessage").textContent = "";
+
+    playerUnlocked = false;
+
+    document.getElementById("fireButton").disabled = true;
+    document.getElementById("checkButton").disabled = false;
+}
+
+// Check math answer
+function checkAnswer() {
+
+    if (gameOver || !playerTurn || waiting) return;
+
+    const answer = Number(
+        document.getElementById("answer").value
+    );
+
+    if (document.getElementById("answer").value === "") {
+        document.getElementById("mathMessage").textContent =
+            "Enter an answer first!";
+        return;
+    }
+
+    if (answer === correctAnswer) {
+
+        playerUnlocked = true;
+
+        document.getElementById("mathMessage").textContent =
+            "Correct! Your weapon is ready!";
+
+        document.getElementById("fireButton").disabled = false;
+        document.getElementById("checkButton").disabled = true;
+
+    } else {
+
+        document.getElementById("mathMessage").textContent =
+            "Incorrect! Try again.";
+    }
+}
+
+// Update angle and power labels
+function updateControls() {
+
+    document.getElementById("angleValue").textContent =
+        document.getElementById("angle").value + "°";
+
+    document.getElementById("powerValue").textContent =
+        document.getElementById("power").value;
+}
+
+// Draw a tank
+function drawTank(tank, angle) {
+
+    ctx.save();
+
+    ctx.translate(tank.x, tank.y);
+
+    // Tank tracks
+    ctx.fillStyle = "#30343b";
+    ctx.fillRect(-34, -12, 68, 17);
+
+    // Tank body
+    ctx.fillStyle = tank.color;
+    ctx.fillRect(-28, -29, 56, 20);
+
+    // Tank top
+    ctx.beginPath();
+    ctx.arc(0, -30, 14, Math.PI, 0);
+    ctx.fillStyle = tank.color;
+    ctx.fill();
+
+    // Turret
+    ctx.save();
+    ctx.translate(0, -30);
+
+    let direction = tank === player ? -1 : 1;
+    let radians = angle * Math.PI / 180;
+
+    ctx.rotate(
+        direction === -1 ? -radians : Math.PI + radians
+    );
+
+    ctx.fillStyle = "#252525";
+    ctx.fillRect(0, -5, 38, 10);
+
+    ctx.restore();
+
+    ctx.restore();
+}
+
+// Draw environment
+function drawEnvironment() {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Sky
+    let sky = ctx.createLinearGradient(0, 0, 0, groundY);
+    sky.addColorStop(0, "#65c7ff");
+    sky.addColorStop(1, "#d7f4ff");
+
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Sun
+    ctx.fillStyle = "#ffe66d";
+    ctx.beginPath();
+    ctx.arc(760, 65, 35, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Clouds
+    drawCloud(180, 75);
+    drawCloud(460, 110);
+
+    // Ground
+    ctx.fillStyle = "#5b9c42";
+    ctx.fillRect(0, groundY, canvas.width, 70);
+
+    ctx.fillStyle = "#34752c";
+    ctx.fillRect(0, groundY + 35, canvas.width, 35);
+
+    // Tanks
+    drawTank(player, Number(document.getElementById("angle").value));
+    drawTank(enemy, 45);
+
+    // Projectile
+    if (projectile) {
+        ctx.fillStyle = "#252525";
+        ctx.beginPath();
+        ctx.arc(projectile.x, projectile.y, 7, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    // Explosion
+    if (explosion) {
+
+        ctx.beginPath();
+        ctx.arc(
+            explosion.x,
+            explosion.y,
+            explosion.radius,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle = "rgba(255, 115, 0, 0.65)";
+        ctx.fill();
+
+    }
+}
+
+function drawCloud(x, y) {
+
+    ctx.fillStyle = "white";
+
+    ctx.beginPath();
+    ctx.arc(x, y, 20, 0, Math.PI * 2);
+    ctx.arc(x + 22, y - 10, 25, 0, Math.PI * 2);
+    ctx.arc(x + 45, y, 20, 0, Math.PI * 2);
+    ctx.fill();
+}
+
+// Fire a projectile
+function fireShot() {
+
+    if (
+        !playerUnlocked ||
+        gameOver ||
+        !playerTurn ||
+        waiting ||
+        projectile
+    ) return;
+
+    playerUnlocked = false;
+
+    document.getElementById("fireButton").disabled = true;
+
+    const angle = Number(document.getElementById("angle").value);
+    const power = Number(document.getElementById("power").value);
+
+    const radians = angle * Math.PI / 180;
+
+    projectile = {
+        x: player.x,
+        y: player.y - 35,
+        vx: Math.cos(radians) * power * 0.20,
+        vy: -Math.sin(radians) * power * 0.20,
+        owner: "player"
+    };
+
+    document.getElementById("gameMessage").textContent =
+        "Your tank has fired!";
+}
+
+// Computer attack
+function enemyAttack() {
+
+    if (gameOver) return;
+
+    waiting = true;
+    playerTurn = false;
+
+    document.getElementById("turnText").textContent =
+        "Enemy Turn!";
+
+    document.getElementById("gameMessage").textContent =
+        "The enemy is preparing an attack...";
+
+    setTimeout(() => {
+
+        if (gameOver) return;
+
+        let angle = 35 + Math.random() * 25;
+        let power = 45 + Math.random() * 25;
+
+        let radians = angle * Math.PI / 180;
+
+        projectile = {
+            x: enemy.x,
+            y: enemy.y - 35,
+            vx: -Math.cos(radians) * power * 0.20,
+            vy: -Math.sin(radians) * power * 0.20,
+            owner: "enemy"
+        };
+
+        waiting = false;
+
+        document.getElementById("gameMessage").textContent =
+            "Enemy tank fired!";
+
+    }, 1200);
+}
+
+// Animate projectile
+function updateProjectile() {
+
+    if (!projectile) return;
+
+    const gravity = 0.12;
+
+    projectile.x += projectile.vx;
+    projectile.y += projectile.vy;
+
+    projectile.vy += gravity;
+
+    let target = projectile.owner === "player" ? enemy : player;
+
+    // Check for tank collision
+    let distance = Math.hypot(
+        projectile.x - target.x,
+        projectile.y - (target.y - 20)
+    );
+
+    if (distance < 38) {
+        hitTank(target, projectile.owner);
+        return;
+    }
+
+    // Check ground collision
+    if (projectile.y >= groundY) {
+
+        explosion = {
+            x: projectile.x,
+            y: groundY,
+            radius: 10,
+            timer: 20
+        };
+
+        projectile = null;
+
+        setTimeout(() => finishTurn(), 700);
+
+        return;
+    }
+
+    // Projectile leaves screen
+    if (
+        projectile.x < 0 ||
+        projectile.x > canvas.width ||
+        projectile.y < 0
+    ) {
+        projectile = null;
+        finishTurn();
+    }
+}
+
+// Handle tank hit
+function hitTank(target, owner) {
+
+    projectile = null;
+
+    explosion = {
+        x: target.x,
+        y: target.y - 20,
+        radius: 30,
+        timer: 25
+    };
+
+    let damage = 20 + Math.floor(Math.random() * 16);
+
+    if (owner === "player") {
+        enemyHealth = Math.max(0, enemyHealth - damage);
+        playerHits++;
+    } else {
+        playerHealth = Math.max(0, playerHealth - damage);
+        enemyHits++;
+    }
+
+    updateHealth();
+
+    document.getElementById("gameMessage").textContent =
+        `Direct hit! ${damage} damage!`;
+
+    setTimeout(() => {
+
+        explosion = null;
+
+        if (checkGameOver()) return;
+
+        finishTurn();
+
+    }, 800);
+}
+
+// Update health bars
+function updateHealth() {
+
+    document.getElementById("playerHealth").style.width =
+        playerHealth + "%";
+
+    document.getElementById("enemyHealth").style.width =
+        enemyHealth + "%";
+
+    document.getElementById("playerHealthText").textContent =
+        playerHealth + " HP";
+
+    document.getElementById("enemyHealthText").textContent =
+        enemyHealth + " HP";
+
+    document.getElementById("scoreText").textContent =
+        `Your Hits: ${playerHits} | Enemy Hits: ${enemyHits}`;
+}
+
+// Check for winner
+function checkGameOver() {
+
+    if (playerHealth <= 0 || enemyHealth <= 0) {
+
+        gameOver = true;
+
+        document.getElementById("turnText").textContent =
+            "Game Over!";
+
+        if (enemyHealth <= 0) {
+            document.getElementById("gameMessage").textContent =
+                "🏆 YOU WIN! The enemy tank has been destroyed!";
+        } else {
+            document.getElementById("gameMessage").textContent =
+                "💥 YOU LOST! Your tank has been destroyed!";
+        }
+
+        document.getElementById("fireButton").disabled = true;
+        document.getElementById("checkButton").disabled = true;
+
+        return true;
+    }
+
+    return false;
+}
+
+// Finish a turn
+function finishTurn() {
+
+    if (gameOver) return;
+
+    if (playerTurn) {
+
+        playerTurn = false;
+        enemyAttack();
+
+    } else {
+
+        playerTurn = true;
+        difficulty++;
+
+        document.getElementById("turnText").textContent =
+            "Your Turn!";
+
+        document.getElementById("gameMessage").textContent =
+            "Solve the next equation to attack!";
+
+        generateQuestion();
+    }
+}
+
+// Restart game
+function restartGame() {
+
+    playerHealth = 100;
+    enemyHealth = 100;
+
+    playerHits = 0;
+    enemyHits = 0;
+
+    difficulty = 1;
+
+    playerTurn = true;
+    playerUnlocked = false;
+    gameOver = false;
+    waiting = false;
+
+    projectile = null;
+    explosion = null;
+
+    document.getElementById("turnText").textContent =
+        "Your Turn!";
+
+    document.getElementById("gameMessage").textContent =
+        "Solve the equation to unlock your attack!";
+
+    updateHealth();
+    generateQuestion();
+
+}
+
+// Game animation loop
+function gameLoop() {
+
+    if (projectile) {
+        updateProjectile();
+    }
+
+    if (explosion) {
+
+        explosion.timer--;
+
+        explosion.radius += 1.5;
+
+        if (explosion.timer <= 0) {
+            explosion = null;
+        }
+    }
+
+    drawEnvironment();
+
+    requestAnimationFrame(gameLoop);
+}
+
+// Start game
+updateControls();
+updateHealth();
+generateQuestion();
+gameLoop();
+
+</script>
+
+</body>
+</html>
